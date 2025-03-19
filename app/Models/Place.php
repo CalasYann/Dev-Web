@@ -26,5 +26,9 @@ class Place extends Model
         'horaire_ouverture' => 'string',
         'horaire_fermeture' => 'string',
     ];
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }
 

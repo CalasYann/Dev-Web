@@ -8,25 +8,39 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-    public function create($place_id)
+    public function create(Place $place)
     {
-        $place = Place::findOrFail($place_id);
         return view('reservations.create', compact('place'));
     }
 
-    public function store(Request $request, $place_id)
+    public function store(Request $request, Place $place)
     {
         $request->validate([
-            'reservation_time' => 'required|date',
+            'start_time' => 'required|date_format:Y-m-d H:i:s',
+            'end_time' => 'required|date_format:Y-m-d H:i:s|after:start_time',
         ]);
 
-        $reservation = new Reservation();
-        $reservation->user_id = auth()->id(); // L'utilisateur authentifié
-        $reservation->place_id = $place_id; // Le lieu réservé
-        $reservation->reservation_time = $request->reservation_time;
-        $reservation->save();
+        // Vérifier si le lieu est déjà réservé sur cette plage horaire
+        $existingReservation = Reservation::where('place_id', $place->id)
+            ->where(function ($query) use ($request) {
+                $query->whereBetween('start_time', [$request->start_time, $request->end_time])
+                    ->orWhereBetween('end_time', [$request->start_time, $request->end_time]);
+            })->exists();
 
-        return redirect()->route('places.index')->with('success', 'Réservation réussie!');
+        if ($existingReservation) {
+            return back()->withErrors(['error' => 'Ce lieu est déjà réservé sur cette période.']);
+        }
+
+        // Créer la réservation
+        Reservation::create([
+            'user_id' => auth()->id(),
+            'place_id' => $place->id,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+        ]);
+
+        return redirect()->route('places.index')->with('success', 'Réservation effectuée avec succès.');
     }
+
 }
 

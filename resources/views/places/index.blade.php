@@ -48,6 +48,9 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lieu ?')">Supprimer</button>
             </form>
+            
+            <a href="{{ route('reservations.create', $place) }}" class="btn btn-primary">Réserver</a>
+
         </div>
     @endforeach
 

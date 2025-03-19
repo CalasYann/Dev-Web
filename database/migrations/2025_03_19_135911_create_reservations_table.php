@@ -9,16 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // L'utilisateur qui réserve
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Utilisateur qui réserve
             $table->foreignId('place_id')->constrained()->onDelete('cascade'); // Lieu réservé
-            $table->dateTime('reservation_time'); // Heure de la réservation
+            $table->dateTime('start_time'); // Heure de début
+            $table->dateTime('end_time');   // Heure de fin
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

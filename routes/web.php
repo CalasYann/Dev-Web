@@ -20,8 +20,8 @@ Route::put('/places/{place}', [PlaceController::class, 'update'])->name('places.
 Route::delete('/places/{place}', [PlaceController::class, 'destroy'])->name('places.destroy');
 
 
-
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::get('/places/{place}/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
     Route::post('/places/{place}/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 });
+
