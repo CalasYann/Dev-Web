@@ -3,15 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\VisitorController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/places', [PlaceController::class, 'index'])->name('places.index');
 Route::get('/places/{place}', [PlaceController::class, 'show'])->name('places.show');
-
+Route::get('/', [VisitorController::class, 'index']);
 Route::get('/places/create', [PlaceController::class, 'create'])->name('places.create');
 Route::post('/places', [PlaceController::class, 'store'])->name('places.store');
 
@@ -25,3 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/places/{place}/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 });
 
+<<<<<<< HEAD
+=======
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> e287038 (Ajout de la page d'acceuil, ainsi que le systeme d'authification (primitif))
