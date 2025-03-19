@@ -8,9 +8,38 @@ use Illuminate\Http\Request;
 
 class PlaceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $places = Place::all(); // Récupère tous les lieux
+        $query = Place::query();
+
+        // Filtrer par type
+        if ($request->filled('type')) {
+            $query->where('type', $request->input('type'));
+        }
+
+        // Filtrer par affluence (minimum)
+        if ($request->filled('affluence_min')) {
+            $query->where('affluence', '>=', $request->input('affluence_min'));
+        }
+
+        // Filtrer par affluence (maximum)
+        if ($request->filled('affluence_max')) {
+            $query->where('affluence', '<=', $request->input('affluence_max'));
+        }
+
+        // Filtrer par horaires d'ouverture
+        if ($request->filled('horaire_ouverture')) {
+            $query->where('horaire_ouverture', '<=', $request->input('horaire_ouverture'));
+        }
+
+        // Filtrer par horaires de fermeture
+        if ($request->filled('horaire_fermeture')) {
+            $query->where('horaire_fermeture', '>=', $request->input('horaire_fermeture'));
+        }
+
+        // Récupération des lieux filtrés
+        $places = $query->get();
+
         return view('places.index', compact('places'));
     }
 
