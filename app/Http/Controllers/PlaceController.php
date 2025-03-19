@@ -56,7 +56,7 @@ class PlaceController extends Controller
             'type' => 'required|string|max:255',
             'description' => 'nullable|string',
             'adresse' => 'nullable|string|max:255',
-            'affluence' => 'nullable|integer|min:0',
+            'affluence' => 'nullable|integer|min:0|max:5',
             'horaire_ouverture' => 'nullable|date_format:H:i',
             'horaire_fermeture' => 'nullable|date_format:H:i',
         ]);
@@ -66,4 +66,34 @@ class PlaceController extends Controller
 
         return redirect()->route('places.index'); // Rediriger vers la page d'index après la création
     }
+        // Afficher le formulaire d'édition
+    public function edit(Place $place)
+    {
+        return view('places.edit', compact('place'));
+    }
+
+    // Mettre à jour un lieu
+    public function update(Request $request, Place $place)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'affluence' => 'nullable|integer|min:0|max:5',
+            'horaire_ouverture' => 'required',
+            'horaire_fermeture' => 'required',
+        ]);
+
+        $place->update($request->all());
+
+        return redirect()->route('places.index')->with('success', 'Lieu mis à jour avec succès.');
+    }
+
+    // Supprimer un lieu
+    public function destroy(Place $place)
+    {
+        $place->delete();
+        return redirect()->route('places.index')->with('success', 'Lieu supprimé avec succès.');
+    }
+
 }

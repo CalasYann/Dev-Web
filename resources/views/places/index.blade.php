@@ -32,8 +32,25 @@
     <!-- Affiche la liste des lieux -->
     <ul>
         @foreach ($places as $place)
-            <li>{{ $place->name }} - {{ $place->type }} - {{ $place->capacity }} personnes</li>
-        @endforeach
+        <div>
+            <h3>{{ $place->name }} ({{ $place->type }})</h3>
+            <p>{{ $place->description }}</p>
+            <p>Affluence : {{ $place->affluence }}</p>
+            <p>Ouverture : {{ $place->horaire_ouverture }}</p>
+            <p>Fermeture : {{ $place->horaire_fermeture }}</p>
+
+            <!-- Bouton Modifier -->
+            <a href="{{ route('places.edit', $place) }}" class="btn btn-warning">Modifier</a>
+
+            <!-- Bouton Supprimer -->
+            <form action="{{ route('places.destroy', $place) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lieu ?')">Supprimer</button>
+            </form>
+        </div>
+    @endforeach
+
     </ul>
 
     <h2>Ajouter un nouveau lieu</h2>
