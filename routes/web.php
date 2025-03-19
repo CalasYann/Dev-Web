@@ -32,9 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/places/{place}/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 });
 
-<<<<<<< HEAD
-=======
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> e287038 (Ajout de la page d'acceuil, ainsi que le systeme d'authification (primitif))
