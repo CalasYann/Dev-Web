@@ -8,15 +8,15 @@
 <body>
 
     <header>
-        <h1>Welcome to the Visitor's Free Tour</h1>
-        <p>Explore local places, events, and transport schedules.</p>
+        <h1>Bienvenu sur le site de Woippy</h1>
+        <p>Explorer les alentours de notre chalereuse commune</p>
     </header>
 
     <!-- Free Tour Section -->
     <section>
-        <h2>Discover Local Information</h2>
+        <h2>Informations local</h2>
         <div>
-            <h3>Places of Interest</h3>
+            <h3>Lieu d'intérêt</h3>
             <ul>
                 @foreach($placesOfInterest as $place)
                     <li>{{ $place->name }} - {{ $place->description }}</li>
@@ -24,7 +24,7 @@
             </ul>
         </div>
         <div>
-            <h3>Upcoming Events</h3>
+            <h3>Evénement à venir</h3>
             <ul>
                 @foreach($events as $event)
                     <li>{{ $event->name }} - {{ $event->date }}</li>
@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div>
-            <h3>Transport Schedules</h3>
+            <h3>Horraire de transport</h3>
             <ul>
                 @foreach($transportSchedules as $schedule)
                     <li>{{ $schedule->route }} - {{ $schedule->time }}</li>
@@ -43,27 +43,27 @@
 
     <!-- Recherche d'information avec filtres -->
     <section>
-        <h2>Search Information</h2>
+        <h2>Chercher des informations</h2>
         <form method="GET" action="{{ route('search') }}">
             <label for="category">Category:</label>
             <select name="category" id="category">
-                <option value="places">Places of Interest</option>
-                <option value="events">Events</option>
-                <option value="transport">Transport Schedules</option>
+                <option value="places">Lieu d'intérêt</option>
+                <option value="events">Evénement</option>
+                <option value="transport">Horraire de transport</option>
             </select>
 
-            <label for="keyword">Keyword:</label>
+            <label for="keyword">Mot-clé:</label>
             <input type="text" name="keyword" id="keyword">
 
-            <button type="submit">Search</button>
+            <button type="submit">rechercher</button>
         </form>
     </section>
 
     <!-- Inscription sur la plateforme -->
     <section>
-        <h2>Join Us</h2>
-        <p>Sign up to access more features!</p>
-        <a href="{{ route('register') }}">Sign up</a>
+        <h2>Rejoignez nous !</h2>
+        <p>connecté vous pour plus de fonctionnalités</p>
+        <a href="{{ route('register') }}">connexion</a>
     </section>
 
 </body>
