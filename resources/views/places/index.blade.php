@@ -55,7 +55,8 @@
     @endforeach
 
     </ul>
-
+<!-- Afficher mes réservations à venir -->
+ 
     <h2>Ajouter un nouveau lieu</h2>
 
     <form action="{{ route('places.store') }}" method="POST">

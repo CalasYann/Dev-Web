@@ -32,6 +32,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/places/{place}/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 });
 
+Route::delete('/reservations/{res}', [ReservationController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('reservations.destroy');
+
+Route::get('/my-reservations', [ReservationController::class, 'myReservations'])
+    ->middleware('auth')
+    ->name('reservations.index');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
