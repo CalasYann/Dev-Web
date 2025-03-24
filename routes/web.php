@@ -7,7 +7,6 @@ use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReportController;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -54,3 +53,8 @@ Route::post('/report', [ReportController::class, 'store'])->name('report.store')
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('object', ObjectController::class);
+});

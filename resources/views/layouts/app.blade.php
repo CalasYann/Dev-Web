@@ -72,6 +72,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <li>
+                            <a href="{{ route('object.index') }}">🔌 Objets Connectés</a>
+                        </li>
                     </ul>
                 </div>
             </div>
