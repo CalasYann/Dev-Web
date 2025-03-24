@@ -8,8 +8,8 @@
 <body>
 
     <header>
-        <h1>Bienvenu sur le site de Woippy</h1>
-        <p>Explorer les alentours de notre chalereuse commune</p>
+        <h1>Bienvenue sur le site de Woippy</h1>
+        <p>Explorez les alentours de notre chaleureuse commune</p>
     </header>
 
     <!-- Free Tour Section -->
@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div>
-            <h3>Horraire de transport</h3>
+            <h3>Horaires de transports</h3>
             <ul>
                 @foreach($transportSchedules as $schedule)
                     <li>{{ $schedule->route }} - {{ $schedule->time }}</li>
@@ -47,9 +47,9 @@
         <form method="GET" action="{{ route('search') }}">
             <label for="category">Category:</label>
             <select name="category" id="category">
-                <option value="places">Lieu d'intérêt</option>
-                <option value="events">Evénement</option>
-                <option value="transport">Horraire de transport</option>
+                <option value="places">Lieux d'intérêts</option>
+                <option value="events">Evenement</option>
+                <option value="transport">Horaires de transports</option>
             </select>
 
             <label for="keyword">Mot-clé:</label>
@@ -62,9 +62,14 @@
     <!-- Inscription sur la plateforme -->
     <section>
         <h2>Rejoignez nous !</h2>
-        <p>connecté vous pour plus de fonctionnalités</p>
+        <p>connectez vous pour plus de fonctionnalités</p>
         <a href="{{ route('register') }}">connexion</a>
     </section>
 
+    <section>
+        <h2>si jamais vous avez un problème:</h2>
+        <a href="{{ route('report.index') }}">Signaler un problème</a>
+
+    </section> 
 </body>
 </html>

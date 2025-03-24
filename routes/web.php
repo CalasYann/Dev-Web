@@ -6,6 +6,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +44,11 @@ Route::get('/my-reservations', [ReservationController::class, 'myReservations'])
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+
+
+
+Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+Route::post('/report', [ReportController::class, 'store'])->name('report.store');
 
 
 Auth::routes();
