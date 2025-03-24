@@ -52,7 +52,7 @@
             <a href="{{ route('reservations.create', $place) }}" class="btn btn-primary">Réserver</a>
 
         </div>
-    @endforeach
+        @endforeach
 
     </ul>
 <!-- Afficher mes réservations à venir -->

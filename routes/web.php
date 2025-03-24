@@ -7,6 +7,9 @@ use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\Object_CoController;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -56,5 +59,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('object', ObjectController::class);
+    Route::resource('object_co', Object_CoController::class);
 });

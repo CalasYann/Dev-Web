@@ -3,10 +3,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 
-class IotDevice extends Model
+class Object_Co extends Model
 {
     use HasFactory;
+
+    protected $table = 'object_cos';
 
     protected $fillable = ['name', 'type', 'status', 'location'];
 
@@ -16,9 +19,9 @@ class IotDevice extends Model
 
     public function setStatusAttribute($value){
         if(!in_array($value, self::getStatusOptions())){
-            throw new \InvalideArgumentException("Statut invalide : {$value}");
+            throw new \InvalidArgumentException("Statut invalide : {$value}");
         }
-        $this->attribute['status']=$value;
+        $this->attributes['status']=$value;
     }
 
 }
