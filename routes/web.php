@@ -10,6 +10,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Object_CoController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+
 
 
 Route::get('/', function () {
@@ -75,3 +77,12 @@ Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
 Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show'); // Page publique
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Page privée
+    Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update'); // Mise à jour
+});
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');

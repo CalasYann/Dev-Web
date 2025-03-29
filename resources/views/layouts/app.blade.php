@@ -78,6 +78,13 @@
                         <li class="nav-item">
                             <a href="{{ route('events.index') }}">Voir les événements</a>
                         </li>
+                        <li class="nav-item">
+                        @auth
+                            <a href="{{ route('profile.show', auth()->user()) }}" class="btn btn-primary">
+                                Mon Profil
+                            </a>
+                        @endauth
+                        </li>
                     </ul>
                 </div>
             </div>

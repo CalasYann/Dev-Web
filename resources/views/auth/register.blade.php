@@ -38,6 +38,25 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="prenom" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" value="{{ old('prenom') }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="adresse" class="form-label">Adresse</label>
+                            <input type="text" class="form-control" id="adresse" name="adresse" value="{{ old('adresse') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Âge</label>
+                            <input type="number" class="form-control" id="age" name="age" value="{{ old('age') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="metier" class="form-label">Métier</label>
+                            <input type="text" class="form-control" id="metier" name="metier" value="{{ old('metier') }}">
+                        </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
