@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles; // Utilisation de Spatie pour les rôles
 
+    protected $guard_name = 'web';
+
     protected $fillable = [
         'name',
         'email',
