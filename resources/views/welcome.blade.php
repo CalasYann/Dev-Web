@@ -1,8 +1,17 @@
+<?php
+
+use App\Models\Article;
+
+$articles = Article::latest()->take(5)->get();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/Acceuil.css') }}">
     <title>{{ config('app.name') }}</title>
 </head>
 <body>
@@ -13,32 +22,15 @@
     </header>
 
     <!-- Free Tour Section -->
-    <section>
-        <h2>Informations local</h2>
-        <div>
-            <h3>Lieu d'intérêt</h3>
-            <ul>
-                @foreach($placesOfInterest as $place)
-                    <li>{{ $place->name }} - {{ $place->description }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <div>
-            <h3>Evénement à venir</h3>
-            <ul>
-                @foreach($events as $event)
-                    <li>{{ $event->name }} - {{ $event->date }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <div>
-            <h3>Horaires de transports</h3>
-            <ul>
-                @foreach($transportSchedules as $schedule)
-                    <li>{{ $schedule->route }} - {{ $schedule->time }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <section class="articles">
+        <h2>Derniers articles</h2>
+        <?php foreach ($articles as $article): ?>
+            <article>
+                <h3><?= htmlspecialchars($article->title) ?></h3>
+                <p><?= htmlspecialchars($article->excerpt) ?></p>
+                <a href="article.php?id=<?= $article->id ?>">Lire la suite</a>
+            </article>
+        <?php endforeach; ?>
     </section>
 
     <!-- Recherche d'information avec filtres -->
