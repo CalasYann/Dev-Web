@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Object_CoController;
+use App\Http\Controllers\EventController;
 
 
 Route::get('/', function () {
@@ -61,3 +62,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function () {
     Route::resource('object_co', Object_CoController::class);
 });
+
+Route::resource('events', EventController::class);
+
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
+Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
+Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');

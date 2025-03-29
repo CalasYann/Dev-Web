@@ -72,8 +72,11 @@
                                 </div>
                             </li>
                         @endguest
-                        <li>
+                        <li class="nav-item">
                             <a href="{{ route('object_co.index') }}">🔌 Objets Connectés</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('events.index') }}">Voir les événements</a>
                         </li>
                     </ul>
                 </div>

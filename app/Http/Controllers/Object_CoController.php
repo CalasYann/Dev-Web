@@ -63,7 +63,7 @@ class Object_CoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy(Object_CO $object_co)
     {
         $object_co->delete();
         return redirect()->route('object_co.index')->with('success', 'Objet supprimé.');

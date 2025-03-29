@@ -14,9 +14,9 @@
 
         <label>Statut :</label>
         <select name="status" required>
-            <option value="online" {{ $object_co->status == 'online' ? 'selected' : '' }}>🟢 En ligne</option>
-            <option value="offline" {{ $object_co->status == 'offline' ? 'selected' : '' }}>🔴 Hors ligne</option>
-            <option value="maintenance" {{ $object_co->status == 'maintenance' ? 'selected' : '' }}>🛠 En maintenance</option>
+            <option value="en marche" {{ $object_co->status == 'en marche' ? 'selected' : '' }}>🟢 En ligne</option>
+            <option value="éteint" {{ $object_co->status == 'éteint' ? 'selected' : '' }}>🔴 Hors ligne</option>
+            <option value="Maintenance" {{ $object_co->status == 'Maintenance' ? 'selected' : '' }}>🛠 En maintenance</option>
         </select>
 
         <label>Emplacement :</label>
