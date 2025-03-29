@@ -59,17 +59,25 @@
         </form>
     </section>
 
-    <!-- Inscription sur la plateforme -->
-    <section>
-        <h2>Rejoignez nous !</h2>
-        <p>connectez vous pour plus de fonctionnalités</p>
-        <a href="{{ route('register') }}">connexion</a>
-    </section>
+    
 
     <section>
         <h2>si jamais vous avez un problème:</h2>
         <a href="{{ route('report.index') }}">Signaler un problème</a>
 
     </section> 
+    <nav>
+        <ul>
+            <!-- Vérifie si l'utilisateur est connecté -->
+            @if (auth()->check())
+                <li><a href="{{ route('profile') }}">Mon profil</a></li>
+            @else
+                <li><a href="{{ route('login') }}">Se connecter</a></li>
+                <li><a href="{{ route('register') }}">S'inscrire</a></li>
+            @endif
+        </ul>
+    </nav>
+    
+
 </body>
 </html>

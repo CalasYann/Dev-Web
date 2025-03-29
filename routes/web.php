@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Object_CoController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -48,6 +49,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 
 Route::get('/report', [ReportController::class, 'index'])->name('report.index');

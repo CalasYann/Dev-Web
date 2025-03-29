@@ -45,7 +45,10 @@ class ReservationController extends Controller
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
-
+         // Ajoute de l'XP
+         $user = auth()->user();
+         $user->xp += 1; // Gagne 1 XP par signalement
+         $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('places.index')->with('success', 'Réservation effectuée avec succès.');
     }
 
