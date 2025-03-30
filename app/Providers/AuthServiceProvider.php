@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // Exemple de Gate basé sur un rôle
-        Gate::define('manage-users', function ($user) {
+        Gate::define('admin-access', function ($user) {
             return $user->hasRole('administrateur'); // Vérifie si l'utilisateur a le rôle "administrateur"
         });
     }

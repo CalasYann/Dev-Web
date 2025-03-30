@@ -74,7 +74,7 @@ Route::get('/events/create', [EventController::class, 'create'])->name('events.c
 Route::post('/events', [EventController::class, 'store'])->name('events.store')->middleware('auth');
 
 Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit')->middleware('auth');
-Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update')->middleware('auth');
+//Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update')->middleware('auth');
 Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth'); // Page publique
@@ -87,8 +87,8 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/make-admin', [UserController::class, 'makeAdmin'])->name('makeAdmin')->middleware('auth');
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');

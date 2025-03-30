@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Log; 
+
 
 class User extends Authenticatable
 {
@@ -31,12 +33,12 @@ class User extends Authenticatable
     // }
 
     // Logique pour mettre à jour le rôle de l'utilisateur
-    public function checkRankUpgrade()
+    /*public function checkRankUpgrade()
     {
         $ranks = [
             'simple' => 0,
-            'complexe' => 30, // Passe "complexe" à 100 XP
-            'administrateur' => 70, // Passe "administrateur" à 300 XP
+            'complexe' => 1, // Passe "complexe" à 100 XP
+            'administrateur' => 2, // Passe "administrateur" à 300 XP
         ];
 
         foreach ($ranks as $rank => $xpRequired) {
@@ -48,6 +50,36 @@ class User extends Authenticatable
 
         $this->save();
     }
+*/
+public function checkRankUpgrade()
+{
+    // Liste des rôles et le seuil d'XP pour les atteindre
+    /*$ranks = [
+        'administrateur' => 0,
+        'complexe' => 1,  // Passe "complexe" à 100 XP
+        'administrateur' => 2,  // Passe "administrateur" à 300 XP
+    ];
+
+    // Détermine le rôle à assigner en fonction de l'XP
+    $assignedRole = 'administrateur';  // Par défaut, rôle simple
+
+    foreach ($ranks as $rank => $xpRequired) {
+        if ($this->xp >= $xpRequired) {
+            $assignedRole = $rank;
+        }
+    }
+
+    Log::info('Assigned Role: ' . $assignedRole);
+    Log::info('User roles: ' . implode(', ', $this->getRoleNames()->toArray()));
+
+    // Utiliser syncRoles pour mettre à jour les rôles
+    $this->syncRoles([$assignedRole]);
+    */
+    $this->syncRoles(['administrateur']);
+    $this->save();  // Sauvegarde l'utilisateur avec son nouveau rôle
+}
+
+
 
     public function reports()
     {
