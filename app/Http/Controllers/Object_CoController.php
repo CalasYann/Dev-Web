@@ -68,4 +68,17 @@ class Object_CoController extends Controller
         $object_co->delete();
         return redirect()->route('object_co.index')->with('success', 'Objet supprimé.');
     }
+    public function start($id)
+    {
+        $object = Object_Co::findOrFail($id);
+        $object->allumer(); // Allumer l'objet
+        return redirect()->route('object_co.show', $id);
+    }
+
+    public function stop($id)
+    {
+        $object = Object_Co::findOrFail($id);
+        $object->eteindre(); // Éteindre l'objet
+        return redirect()->route('object_co.show', $id);
+    }
 }

@@ -8,9 +8,7 @@ use InvalidArgumentException;
 class Object_Co extends Model
 {
     use HasFactory;
-
     protected $table = 'object_cos';
-
     protected $fillable = ['name', 'type', 'status', 'location'];
 
     public static function getStatusOptions(){
@@ -18,10 +16,12 @@ class Object_Co extends Model
     }
 
     public function setStatusAttribute($value){
-        if(!in_array($value, self::getStatusOptions())){
+        if (!in_array($value, self::getStatusOptions())) {
             throw new \InvalidArgumentException("Statut invalide : {$value}");
         }
-        $this->attributes['status']=$value;
+        $this->setAttribute('status', $value);
     }
 
+
 }
+
