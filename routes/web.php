@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\VisitorController;
@@ -82,5 +83,27 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update'); // Mise à jour
 });
 
+
+Route::get('/make-admin', [UserController::class, 'makeAdmin'])->name('makeAdmin')->middleware('auth');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+});
+
+
 Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+
+Route::get('/give-admin', function () {
+    $user = App\Models\User::find(1); // Remplace 1 par l'ID de l'utilisateur que tu veux rendre admin
+    if ($user) {
+        $user->assignRole('administrateur'); // Assigner le rôle administrateur
+        return 'L\'utilisateur est maintenant administrateur!';
+    }
+    return 'Utilisateur non trouvé.';
+});
+
