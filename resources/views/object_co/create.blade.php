@@ -21,6 +21,9 @@
 
         <label>Emplacement :</label>
         <input type="text" name="location" value="{{ old('location') }}">
+        
+        <label>Consommation électrique par heure (kWh) :</label>
+        <input type="number" step="0.01" name="consommation_par_heure" id="consommation_par_heure" value="{{ old('consommation_par_heure')}}">
 
         <button type="submit">Ajouter</button>
     </form>

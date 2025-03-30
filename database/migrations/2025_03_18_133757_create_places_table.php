@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('adresse');
+            $table->integer('affluence')->nullable();
             $table->datetime('horaire_ouverture');
             $table->datetime('horaire_fermeture');
             $table->timestamps();

@@ -19,6 +19,7 @@
                 <th>Type</th>
                 <th>Statut</th>
                 <th>Emplacement</th>
+                <th>Consommation Totale (kWh)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,6 +30,8 @@
                     <td>{{ $object->type }}</td>
                     <td>{{ $object->status }}</td>
                     <td>{{ $object->location }}</td>
+                    <td>{{ $object->consommation_totale }}</td>
+
                     <td>
                         <a href="{{ route('object_co.edit', $object->id) }}" class="btn btn-warning">Modifier</a>
                         <form action="{{ route('object_co.destroy', $object->id) }}" method="POST" style="display:inline;">

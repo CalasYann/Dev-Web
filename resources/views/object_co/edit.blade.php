@@ -22,6 +22,10 @@
         <label>Emplacement :</label>
         <input type="text" name="location" value="{{ $object_co->location }}">
 
+        <label for="consommation_par_heure">Consommation électrique par heure (kWh) :</label>
+        <input type="number" step="0.01" name="consommation_par_heure" id="consommation_par_heure" value="{{ old('consommation_par_heure', $object_co->consommation_par_heure) }}" required>
+
+
         <button type="submit">Mettre à jour</button>
     </form>
 @endsection

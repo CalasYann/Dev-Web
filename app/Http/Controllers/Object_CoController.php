@@ -31,16 +31,18 @@ class Object_CoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|string|max:255',
-            'type'=>'required|string|max:255',
-            'status'=> ['required', Rule::in(Object_Co::getStatusOptions())],
-            'location'=>'nullable|string',
+            'name' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'status' => ['required', Rule::in(Object_Co::getStatusOptions())],
+            'location' => 'nullable|string',
+            'consommation_par_heure' => 'required|numeric|min:0',
         ]);
 
         Object_Co::create($request->all());
-        return redirect()->route('object_co.index')->with('success', 'Objet connecté ajouté');
-        
+
+        return redirect()->route('object_co.index')->with('success', 'Objet connecté ajouté avec succès.');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -53,12 +55,21 @@ class Object_CoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Object_CO $object_co)
-    {
-        $object_co->update($request->all());
-        return redirect()->route('object_co.index')->with('success', 'Objet mis à jour');
- 
-    }
+    public function update(Request $request, Object_Co $object_co)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'type' => 'required|string|max:255',
+        'status' => ['required', Rule::in(Object_Co::getStatusOptions())],
+        'location' => 'nullable|string',
+        'consommation_par_heure' => 'required|numeric|min:0',
+    ]);
+
+    $object_co->update($request->all());
+
+    return redirect()->route('object_co.index')->with('success', 'Objet connecté mis à jour.');
+}
+
 
     /**
      * Remove the specified resource from storage.

@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('type');
             $table->enum('status', ['en marche', 'éteint', 'Maintenance'])->default('éteint');
             $table->string('location');
+            $table->float('consommation_par_heure')->default(0);
+            $table->integer('temps_total_allume')->default(0);
+            $table->integer('temps_depuis_dernier_allumage')->default(0);
+            $table->timestamp('last_status_changed_at')->nullable();
             $table->timestamps();
         });
     }
