@@ -214,3 +214,119 @@ nav ul {
 .evenements button:hover {
     background-color: #c82333;
 }
+
+/*CSS Crée un évènement */
+
+.cree-evenements {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding-right: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cree-evenements h1 {
+    text-align: center;
+    color: #333;
+}
+
+.cree-evenements label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cree-evenements input,
+.cree-evenements textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cree-evenements textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.cree-evenements button {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cree-evenements button:hover {
+    background-color: #0056b3;
+}
+
+/* CSS Modification d'événement */
+
+.modifier-event {
+    width: 50%;
+    margin: 20px auto;
+    background: white;
+    padding-right: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modifier-event h1 {
+    text-align: center;
+    color: #333;
+}
+
+.modifier-event label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.modifier-event input,
+.modifier-event textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modifier-event textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.modifier-event button {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.modifier-event button:hover {
+    background-color: #218838;
+}
