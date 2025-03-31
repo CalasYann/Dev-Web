@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('temps_total_allume')->default(0);
             $table->integer('temps_depuis_dernier_allumage')->default(0);
             $table->timestamp('last_status_changed_at')->nullable();
+            $table->integer('nombre_interactions')->default(0);
             $table->timestamps();
         });
     }

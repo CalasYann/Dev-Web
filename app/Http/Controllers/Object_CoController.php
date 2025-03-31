@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Object_Co;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class Object_CoController extends Controller
 {
@@ -57,6 +59,7 @@ class Object_CoController extends Controller
      */
     public function update(Request $request, Object_Co $object_co)
 {
+    $object_co->interaction();
     $request->validate([
         'name' => 'required|string|max:255',
         'type' => 'required|string|max:255',
@@ -91,5 +94,25 @@ class Object_CoController extends Controller
         $object = Object_Co::findOrFail($id);
         $object->eteindre(); // Éteindre l'objet
         return redirect()->route('object_co.show', $id);
+    }
+
+    public function rapport()
+    {
+        $objects = Object_Co::all(); // Récupère tous les objets connectés
+
+        return view('rapport', compact('objects')); // Passe les objets à la vue
+    }
+
+
+
+    public function genererRapportPDF()
+    {
+        $objects = Object_Co::all();
+
+        // Générer le PDF avec la vue correspondante
+        $pdf = PDF::loadView('rapport_pdf', compact('objects'));
+
+        // Télécharger le fichier PDF
+        return $pdf->download('rapport-objets-connectes.pdf');
     }
 }

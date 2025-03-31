@@ -10,8 +10,13 @@ class Object_Co extends Model
     use HasFactory;
 
     protected $table = 'object_cos';
-    protected $fillable = ['name', 'type', 'status', 'location', 'consommation_par_heure', 'temps_total_allume', 'temps_depuis_dernier_allumage', 'last_status_changed_at'];
+    protected $fillable = ['name', 'type', 'status', 'location', 'consommation_par_heure', 'temps_total_allume', 'temps_depuis_dernier_allumage', 'last_status_changed_at', 'nombre_interactions'];
     protected $casts = ['last_status_changed_at' => 'datetime'];
+
+
+    public function interaction(){
+        $this->increment('nombre_interactions');
+    }
 
     public static function getStatusOptions(){
         return ['en marche', 'éteint', 'Maintenance'];

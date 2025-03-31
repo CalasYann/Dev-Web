@@ -19,7 +19,7 @@
                 <th>Type</th>
                 <th>Statut</th>
                 <th>Emplacement</th>
-                <th>Consommation Totale (kWh)</th>
+                <th>Consommation Totale (kW)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -44,5 +44,11 @@
             @endforeach
         </tbody>
     </table>
+
+
+    <a href="{{ route('object_cos.rapport') }}" class="btn btn-primary">
+        Voir le rapport des objets connectés
+    </a>
+
 @endsection
 

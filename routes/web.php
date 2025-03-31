@@ -106,3 +106,6 @@ Route::get('/give-admin', function () {
     return 'Utilisateur non trouvé.';
 });
 
+Route::get('/rapport', [Object_CoController::class, 'rapport'])->name('object_cos.rapport');
+
+Route::get('/rapport-objets/pdf', [Object_CoController::class, 'genererRapportPDF'])->name('object_co.rapport.pdf')->middleware('auth');
