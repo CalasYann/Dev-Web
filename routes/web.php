@@ -91,14 +91,14 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/make-admin', [UserController::class, 'makeAdmin'])->name('makeAdmin')->middleware('auth');
 
-/*
+
 Route::middleware('auth')->group(function () {
     Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 });
-*/
+/*
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
     Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
@@ -107,8 +107,10 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });
+*/
 
-
+Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])
+    ->middleware(['auth', 'role:administrateur']);
 
 //Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])
 //    ->middleware(['auth', 'role:administrateur']);

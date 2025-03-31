@@ -8,21 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     */
-    
-
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, $role)
     {
-        dd(Auth::user());
-        // Vérifie si l'utilisateur est connecté et s'il a le bon rôle
-        if (!Auth::check() || Auth::user()->role !== $role) {
+        // Vérifie si l'utilisateur est authentifié et possède le rôle spécifié
+        if (!Auth::check() || !Auth::user()->hasRole($role)) {
             abort(403, 'Accès interdit.');
         }
 
         return $next($request);
     }
-
- 
 }
