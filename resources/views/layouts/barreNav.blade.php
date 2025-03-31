@@ -40,9 +40,9 @@ $articles = Article::latest()->take(5)->get();
         <a href="{{ route('object_co.index') }}">
             <button>🔌 Objets Connectés</button>
         </a>
-        <a href="{{ route('profile.show', auth()->user()) }}">
-            <button>Mon Profile</button>
-        </a>
+        @if(auth()->check())
+            <a href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">Voir mon profil</a>
+        @endif
     </nav>
 
     <div class="container">

@@ -14,7 +14,9 @@
         <div>
             <h3>Patinoire, Salle de fête,etc...Comment les réserver ?</h3>
             <p>Vous préparez un anniversaire, une réception, un événement associatif ou une sortie entre amis ? Croisée met à votre disposition des infrastructures modernes et confortables pour organiser vos activités en toute simplicité.</p>
-            <a href="{{ route('profile.show', auth()->user()) }}">Mon profil</a>
+            @if(auth()->check())
+                <a href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">Voir mon profil</a>
+            @endif    
         </div>
         <div>
             <h3>Participez au Salon de l'Ingénieur de Croisée !</h3>
