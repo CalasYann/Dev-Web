@@ -11,10 +11,7 @@
 <body>
 
     <header class="header-container">
-        <div class="search-bar">
-            <input type="text" placeholder="Recherche...">
-        </div>
-
+        
         <div class="profile-container">
             <h1>La Ville de Croisée</h1>
             <form method="GET" action="{{ route('register') }}">

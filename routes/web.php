@@ -13,7 +13,9 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 
-
+Route::get('/connecte-simple', function () {
+    return view('ConnectéSimple');
+})->name('connecte.simple');
 
 Route::get('/', function () {
     return view('welcome');

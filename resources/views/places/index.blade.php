@@ -1,5 +1,5 @@
 {{-- resources/views/places/index.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>Liste des lieux</h1>

@@ -19,13 +19,17 @@ $articles = Article::latest()->take(5)->get();
 
     <header>
         <h1>La Ville de Croisée</h1>
+
         <a href="{{ route('register') }}">
              <button>Se connecter</button>
         </a>
     </header>
     <nav>
+        <a href="{{ url('/') }}">
+            <button>ACCUEIL</button>
+        </a>
         <a href="{{ route('events.index') }}">
-            <button>ANNONCES</button>
+            <button>ÉVÈNEMENT</button>
         </a>
         <a href="{{ route('places.index') }}">
             <button>DÉCOUVRIR</button>
