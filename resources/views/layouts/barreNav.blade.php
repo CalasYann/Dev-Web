@@ -34,6 +34,15 @@ $articles = Article::latest()->take(5)->get();
         <a href="{{ route('places.index') }}">
             <button>DÉCOUVRIR</button>
         </a>
+        <a href="{{ route('reservations.index') }}">
+            <button>RÉSERVATION</button>
+        </a>
+        <a href="{{ route('object_co.index') }}">
+            <button>🔌 Objets Connectés</button>
+        </a>
+        <a href="{{ route('profile.show', auth()->user()) }}">
+            <button>Mon Profile</button>
+        </a>
     </nav>
 
     <div class="container">

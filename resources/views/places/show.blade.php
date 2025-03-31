@@ -1,6 +1,6 @@
 {{-- resources/views/places/show.blade.php --}}
 
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>{{ $place->name }}</h1>

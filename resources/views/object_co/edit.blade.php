@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>Modifier {{ $object_co->name }}</h1>

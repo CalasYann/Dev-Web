@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>Ajouter un objet connecté</h1>

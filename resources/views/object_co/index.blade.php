@@ -1,5 +1,5 @@
 <!-- resources/views/object_co/index.blade.php -->
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>Liste des objets connectés</h1>
