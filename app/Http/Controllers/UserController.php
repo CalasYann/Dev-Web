@@ -10,12 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    /*
-    public function __construct()
-    {
-        $this->middleware('role:administrateur'); // Vérifie que l'utilisateur est admin
-    }
-*/
+
     public function index(Request $request)
     {
         $users = User::query();
@@ -51,19 +46,11 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function destroy(User $user)
+    public function edit(User $user)
     {
-        $user->delete();
-        return redirect()->route('admin.users')->with('success', 'Utilisateur supprimé');
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
-/*
-    public function admin_index()
-    {
-        $users = User::paginate(10); // Utiliser la pagination
-        return view('profile.admin_index', compact('users'));
-    }
-
-   
 
     public function update(Request $request, User $user)
     {
@@ -73,32 +60,23 @@ class UserController extends Controller
             'role' => 'required|string|exists:roles,name',
         ]);
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-
-        // Synchroniser les rôles
+        $user->update($request->only(['name', 'email']));
         $user->syncRoles([$request->role]);
 
-        return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour');
+        return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour.');
     }
 
-    public function makeAdmin()
+    public function destroy(User $user)
     {
-        $user = Auth::user();
-
-        if (!$user->hasRole('administrateur')) {
-            $use Spatie\Permission\Models\Role;
-            user->assignRole('administrateur');
-        }
-
-        return redirect()->back()->with('success', 'Vous êtes maintenant administrateur.');
+        $user->delete();
+        return redirect()->route('admin.users')->with('success', 'Utilisateur supprimé.');
     }
-
+   
+    
     public function adminDashboard()
-    {
-        $users = User::paginate(10); // Paginer pour éviter d'afficher trop d'utilisateurs d'un coup
-        return view('admin.dashboard', compact('users'));
-    }*/
+{
+    $users = User::paginate(10); // Liste paginée des utilisateurs
+    return view('admin.users', compact('users'));
+}
+
 }
