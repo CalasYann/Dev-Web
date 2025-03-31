@@ -26,7 +26,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Spatie\\Permission\\": "vendor/spatie/laravel-permission/src"
         }
     },
     "autoload-dev": {
@@ -57,7 +58,10 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [],
+            "discover": [
+                "Spatie\\Permission\\PermissionServiceProvider"
+            ]
         }
     },
     "config": {

@@ -54,8 +54,8 @@ class User extends Authenticatable
 public function checkRankUpgrade()
 {
     // Liste des rôles et le seuil d'XP pour les atteindre
-    /*$ranks = [
-        'administrateur' => 0,
+    $ranks = [
+        'simple' => 0,
         'complexe' => 1,  // Passe "complexe" à 100 XP
         'administrateur' => 2,  // Passe "administrateur" à 300 XP
     ];
@@ -74,11 +74,21 @@ public function checkRankUpgrade()
 
     // Utiliser syncRoles pour mettre à jour les rôles
     $this->syncRoles([$assignedRole]);
-    */
-    $this->syncRoles(['administrateur']);
+    
+    //$this->syncRoles(['administrateur']);
     $this->save();  // Sauvegarde l'utilisateur avec son nouveau rôle
 }
 
+protected static function boot()
+{
+    parent::boot();
+
+    static::created(function ($user) {
+        if (!$user->hasRole('simple')) {
+            $user->assignRole('simple');
+        }
+    });
+}
 
 
     public function reports()
@@ -98,6 +108,13 @@ public function checkRankUpgrade()
             'password' => 'hashed',
         ];
     }
+
+
+    public function edit(User $user)
+{
+    $roles = Role::all(); // Récupère tous les rôles
+    return view('profile.admin_edit', compact('user', 'roles'));
+}
 
     public function reservations()
     {

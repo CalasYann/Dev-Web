@@ -12,6 +12,8 @@ use App\Http\Controllers\Object_CoController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Spatie\Permission\Middleware\RoleMiddleware;
+
 
 Route::get('/connecte-simple', function () {
     return view('ConnectéSimple');
@@ -87,25 +89,32 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/make-admin', [UserController::class, 'makeAdmin'])->name('makeAdmin')->middleware('auth');
 
-
+/*
 Route::middleware('auth')->group(function () {
     Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 });
+*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
+    Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
+    Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+});
+
+
+
 
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
 
-Route::get('/give-admin', function () {
-    $user = App\Models\User::find(1); // Remplace 1 par l'ID de l'utilisateur que tu veux rendre admin
-    if ($user) {
-        $user->assignRole('administrateur'); // Assigner le rôle administrateur
-        return 'L\'utilisateur est maintenant administrateur!';
-    }
-    return 'Utilisateur non trouvé.';
+Route::middleware(['auth',/*RoleMiddleware::class.':administrateur'*/])->group(function () {
+    Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin.dashboard');
 });
 
 Route::get('/rapport', [Object_CoController::class, 'rapport'])->name('object_cos.rapport');

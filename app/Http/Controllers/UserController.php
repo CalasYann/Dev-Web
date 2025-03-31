@@ -7,8 +7,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
+
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:administrateur'); // Vérifie que l'utilisateur est admin
+    }
+
     public function index(Request $request)
     {
         $users = User::query();
@@ -37,6 +43,7 @@ class UserController extends Controller
 
         return view('users.index', compact('users'));
     }
+
     public function show(User $user)
     {
         return view('users.show', compact('user'));
@@ -50,29 +57,29 @@ class UserController extends Controller
 
     public function admin_index()
     {
-        $users = User::all();
+        $users = User::paginate(10); // Utiliser la pagination
         return view('profile.admin_index', compact('users'));
     }
 
-    public function edit(User $user)
-    {
-        return view('profile.admin_edit', compact('user'));
-    }
+   
 
     public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|string|exists:roles,name',
         ]);
 
-        $user->update($request->only('name', 'email'));
-        return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour');
-    }
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
-    public function __construct()
-    {
-        $this->middleware('can:admin-access');
+        // Synchroniser les rôles
+        $user->syncRoles([$request->role]);
+
+        return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour');
     }
 
     public function makeAdmin()
@@ -86,6 +93,9 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Vous êtes maintenant administrateur.');
     }
 
-
+    public function adminDashboard()
+    {
+        $users = User::paginate(10); // Paginer pour éviter d'afficher trop d'utilisateurs d'un coup
+        return view('admin.dashboard', compact('users'));
+    }
 }
-

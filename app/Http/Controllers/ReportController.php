@@ -29,7 +29,6 @@ class ReportController extends Controller
         $user = auth()->user();
         $user->xp += 1; // Gagne 1 XP par signalement
 
-        $user->assignRole('administrateur');
 
         Log::info('User XP before upgrade: ' . $user->xp);
         Log::info('User roles before upgrade: ' . implode(', ', $user->getRoleNames()->toArray()));
