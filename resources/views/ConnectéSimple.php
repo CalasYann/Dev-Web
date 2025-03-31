@@ -11,7 +11,7 @@
 <body>
 
     <header class="header-container">
-        
+
         <div class="profile-container">
             <h1>La Ville de Croisée</h1>
             <form method="GET" action="{{ route('register') }}">
@@ -23,7 +23,6 @@
     <nav>
         <button>ANNONCES</button>
         <button>DÉCOUVRIR</button>
-        <button>TRANSPORT</button>
         <button>RESERVER</button>
     </nav>
 
