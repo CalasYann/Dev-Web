@@ -14,7 +14,7 @@
         <div>
             <h3>Patinoire, Salle de fête,etc...Comment les réserver ?</h3>
             <p>Vous préparez un anniversaire, une réception, un événement associatif ou une sortie entre amis ? Croisée met à votre disposition des infrastructures modernes et confortables pour organiser vos activités en toute simplicité.</p>
-                
+            <a href="{{ route('profile.show', auth()->user()) }}">Mon profil</a>
         </div>
         <div>
             <h3>Participez au Salon de l'Ingénieur de Croisée !</h3>
@@ -33,6 +33,7 @@
             <li><strong>Mercredi 26 mars</strong> - Marché de Croisée au Square du Port</li>
         </ul>
     </section>
+    
 </main>
 
     

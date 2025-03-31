@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 
+
 class UserController extends Controller
 {
     public function __construct()
@@ -40,6 +41,7 @@ class UserController extends Controller
         }
 
         $users = $users->paginate(10);
+
 
         return view('users.index', compact('users'));
     }

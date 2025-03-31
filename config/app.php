@@ -32,6 +32,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        App\Providers\AppServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -55,6 +56,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
+        Spatie\Permission\PermissionServiceProvider::class,
         // Barryvdh DomPDF (ajout)
         Barryvdh\DomPDF\ServiceProvider::class,
     ],

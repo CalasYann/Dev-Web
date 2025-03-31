@@ -13,10 +13,12 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Spatie\Permission\Middleware\RoleMiddleware;
+use Spatie\Permission\Models\Role;
+
 
 
 Route::get('/connecte-simple', function () {
-    return view('ConnectéSimple');
+    return view('ConnecteSimple');
 })->name('connecte.simple');
 
 Route::get('/', function () {
@@ -108,12 +110,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+//Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])
+//    ->middleware(['auth', 'role:administrateur']);
+
+Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])
+    ->middleware(['auth'])
+    ->name('admin.dashboard');
 
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
 
-Route::middleware(['auth',/*RoleMiddleware::class.':administrateur'*/])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [UserController::class, 'adminDashboard'])->name('admin.dashboard');
 });
 

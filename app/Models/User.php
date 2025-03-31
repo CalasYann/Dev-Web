@@ -7,12 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Log; 
+use Spatie\Permission\Models\Role;
+
 
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles; // Utilisation de Spatie pour les rôles
-
+    use HasFactory, Notifiable; // Utilisation de Spatie pour les rôles
+    use HasRoles;
+    
     protected $guard_name = 'web';
 
     protected $fillable = [

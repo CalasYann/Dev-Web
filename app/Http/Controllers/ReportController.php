@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Report;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;  
+use Spatie\Permission\Models\Role;
+
 
 
 
