@@ -1,3 +1,5 @@
+/* CSS De la barre de navigation */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -160,4 +162,55 @@ nav a {
 nav ul {
     background-color: #c6c6c6;
     border-radius: 10px;
+}
+
+/* CSS Page évènements */
+
+.evenements h1 {
+    text-align: center;
+    color: #333;
+}
+
+.evenements a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+
+
+.evenements a:hover {
+    text-decoration: underline;
+}
+
+.evenements div {
+    background: white;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+}
+
+.evenements h2 {
+    color: #444;
+}
+
+.evenements p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.evenements button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.evenements button:hover {
+    background-color: #c82333;
 }

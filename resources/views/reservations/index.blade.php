@@ -2,6 +2,12 @@
 
 @section('content')
 
+<div>
+    <a class="nav-link" href="{{ route('places.index') }}">
+        <h2>Réserver un Lieu</h2>
+    </a>
+</div>
+
 <div class="container">
     <h1 class="mb-4"> Mes Réservations </h1>
 
