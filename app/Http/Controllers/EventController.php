@@ -13,9 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $today=Carbon::today();
-
-        $events = Event::where('date', '>=', $today)->get();
+        $events = Event::orderBy('date', 'asc')->get();
         return view('events.index', compact('events'));
     }
 
