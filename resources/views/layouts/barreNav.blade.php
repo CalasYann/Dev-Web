@@ -20,9 +20,9 @@ $articles = Article::latest()->take(5)->get();
     <header>
         <h1>La Ville de Croisée</h1>
 
-        <a href="{{ route('register') }}">
-             <button>Se connecter</button>
-        </a>
+        @if(!auth()->check())
+            <a href="{{ route('login') }}">Se connecter</a>
+        @endif
     </header>
     <nav>
         <a href="{{ url('/') }}">
@@ -40,8 +40,11 @@ $articles = Article::latest()->take(5)->get();
         <a href="{{ route('object_co.index') }}">
             <button>🔌 Objets Connectés</button>
         </a>
+        <a href="{{ route('users.index') }}">
+            <button>CHERCHER DES HABITANTS</button>
+        </a>
         @if(auth()->check())
-            <a href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">Voir mon profil</a>
+            <a href="{{ route('profile.show',  auth()->user()->id) }}">Voir mon profil</a>
         @endif
     </nav>
 

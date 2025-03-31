@@ -1,4 +1,5 @@
-@extends('layouts.app')
+
+@extends('layouts.barreNav')
 
 @section('content')
 <div class="container">
@@ -85,6 +86,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </div>
                         </div>
                     </form>

@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 
 
 class UserController extends Controller
 {
+    /*
     public function __construct()
     {
         $this->middleware('role:administrateur'); // Vérifie que l'utilisateur est admin
     }
-
+*/
     public function index(Request $request)
     {
         $users = User::query();
@@ -56,7 +56,7 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.users')->with('success', 'Utilisateur supprimé');
     }
-
+/*
     public function admin_index()
     {
         $users = User::paginate(10); // Utiliser la pagination
@@ -89,7 +89,8 @@ class UserController extends Controller
         $user = Auth::user();
 
         if (!$user->hasRole('administrateur')) {
-            $user->assignRole('administrateur');
+            $use Spatie\Permission\Models\Role;
+            user->assignRole('administrateur');
         }
 
         return redirect()->back()->with('success', 'Vous êtes maintenant administrateur.');
@@ -99,5 +100,5 @@ class UserController extends Controller
     {
         $users = User::paginate(10); // Paginer pour éviter d'afficher trop d'utilisateurs d'un coup
         return view('admin.dashboard', compact('users'));
-    }
+    }*/
 }
