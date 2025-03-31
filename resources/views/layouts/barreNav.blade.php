@@ -23,6 +23,13 @@ $articles = Article::latest()->take(5)->get();
         @if(!auth()->check())
             <a href="{{ route('login') }}">Se connecter</a>
         @endif
+        @if(auth()->check())
+            <a class="nav-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                <button>Se deconnecter</button>
+            </a>
+        @endif
     </header>
     <nav>
         <a href="{{ url('/') }}">
@@ -44,7 +51,9 @@ $articles = Article::latest()->take(5)->get();
             <button>CHERCHER DES HABITANTS</button>
         </a>
         @if(auth()->check())
-            <a href="{{ route('profile.show',  auth()->user()->id) }}">Voir mon profil</a>
+            <a href="{{ route('profile.show',  auth()->user()->id) }}">
+                <button>Voir mon profil</button>
+            </a>
         @endif
     </nav>
 

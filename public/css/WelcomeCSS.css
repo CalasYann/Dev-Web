@@ -330,3 +330,125 @@ nav ul {
 .modifier-event button:hover {
     background-color: #218838;
 }
+
+
+/* CSS des lieux */
+
+/* CSS Page Liste des lieux */
+
+.lieux {
+    width: 60%;
+    margin: 20px auto;
+    background: white;
+    padding-right: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lieux h1, .lieux h2 {
+    text-align: center;
+    color: #333;
+}
+
+.lieux form {
+    margin-bottom: 20px;
+}
+
+.lieux label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.lieux input,
+.lieux select,
+.lieux textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.lieux textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.lieux button {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.lieux button:hover {
+    background-color: #0056b3;
+}
+
+.lieux div {
+    background: white;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lieux h3 {
+    color: #444;
+}
+
+.lieux p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.lieu-box {
+    width: 60%;
+    margin: 20px auto;
+    background: #e1dbdb;
+    padding-right: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}

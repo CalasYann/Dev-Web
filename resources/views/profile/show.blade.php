@@ -21,6 +21,6 @@
             @endif
 
         @endif
-    @endauth
+    @endauth                
 </div>
 @endsection
