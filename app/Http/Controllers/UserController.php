@@ -79,4 +79,24 @@ class UserController extends Controller
     return view('admin.users', compact('users'));
 }
 
+public function admin_index()
+{
+    $users = User::paginate(10);
+    return view('admin.users.index', compact('users'));
+}
+
+public function updateRoles(Request $request, User $user)
+{
+    $request->validate([
+        'roles' => 'array', // Assure-toi que c'est bien un tableau de rôles
+        'roles.*' => 'string|exists:roles,name' // Vérifie que les rôles existent
+    ]);
+
+    // Synchronise les rôles avec ceux sélectionnés dans le formulaire
+    $user->syncRoles($request->roles);
+
+    return redirect()->route('admin.users')->with('success', 'Rôles mis à jour avec succès.');
+}
+
+
 }

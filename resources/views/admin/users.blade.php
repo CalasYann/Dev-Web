@@ -27,6 +27,23 @@
                     <td>{{ implode(', ', $user->getRoleNames()->toArray()) }}</td>
                     <td>
                         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+                        <form action="{{ route('admin.users.updateRoles', $user) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                        
+                            <label for="roles">Rôles :</label>
+                            <select name="roles[]" id="roles" class="form-select" multiple>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>
+                                        {{ ucfirst($role->name) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        
+                            <button type="submit" class="btn btn-primary mt-2">Mettre à jour</button>
+                        </form>
+                        
                         
                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="d-inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
                             @csrf

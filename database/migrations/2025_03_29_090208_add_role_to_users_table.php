@@ -6,6 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+    /*
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
@@ -18,5 +19,5 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role'); // Supprime la colonne si on annule la migration
         });
-    }
+    }*/
 };

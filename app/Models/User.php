@@ -54,6 +54,13 @@ class User extends Authenticatable
         $this->save();
     }
 */
+
+public function getRoleAttribute()
+{
+    return $this->getRoleNames()->first();
+}
+
+
 public function checkRankUpgrade()
 {
     // Liste des rôles et le seuil d'XP pour les atteindre

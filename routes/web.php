@@ -104,6 +104,12 @@ Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 //});
+Route::put('/admin/users/{user}/roles', [UserController::class, 'updateRoles'])->name('admin.users.updateRoles');
+
+
+
+
+
 
 
 
