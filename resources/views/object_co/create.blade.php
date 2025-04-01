@@ -1,6 +1,7 @@
 @extends('layouts.barreNav')
 
 @section('content')
+<div class="cree-obj">
     <h1>Ajouter un objet connecté</h1>
 
     <form action="{{ route('object_co.store') }}" method="POST">
@@ -27,4 +28,5 @@
 
         <button type="submit">Ajouter</button>
     </form>
+</div>
 @endsection

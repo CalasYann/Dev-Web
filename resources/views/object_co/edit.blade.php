@@ -1,6 +1,8 @@
 @extends('layouts.barreNav')
 
 @section('content')
+<div class="modif-obj">
+
     <h1>Modifier {{ $object_co->name }}</h1>
     <form action="{{ route('object_co.update', $object_co->id) }}" method="POST">
         @csrf
@@ -28,4 +30,5 @@
 
         <button type="submit">Mettre à jour</button>
     </form>
+</div>
 @endsection

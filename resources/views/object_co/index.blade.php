@@ -2,6 +2,7 @@
 @extends('layouts.barreNav')
 
 @section('content')
+<div class="liste-obj">
     <h1>Liste des objets connectés</h1>
 
     @if(session('success'))
@@ -11,7 +12,7 @@
     @endif
 
     <a href="{{ route('object_co.create') }}" class="btn btn-primary">Ajouter un objet</a>
-
+</div>
     <table class="table">
         <thead>
             <tr>
@@ -45,10 +46,8 @@
         </tbody>
     </table>
 
-
+    
     <a href="{{ route('object_cos.rapport') }}" class="btn btn-primary">
         Voir le rapport des objets connectés
     </a>
-
 @endsection
-

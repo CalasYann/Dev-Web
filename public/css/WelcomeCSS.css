@@ -660,3 +660,162 @@ table tr:nth-child(even) {
     border-radius: 5px;
     margin-bottom: 15px;
 }
+
+.liste-obj {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.liste-obj h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table th {
+    background: #007bff;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+.table tr:hover {
+    background: #ddd;
+}
+
+/* CSS modification objets */
+
+.modif-obj {
+    max-width: 600px;
+    margin: 40px auto;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modif-obj h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.modif-obj form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modif-obj label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.modif-obj input,
+.modif-obj select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.modif-obj button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modif-obj button:hover {
+    background: #0056b3;
+}
+
+/* CSS création d'objet connecté */
+
+.cree-obj {
+    max-width: 600px;
+    margin: 40px auto;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cree-obj h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.cree-obj form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cree-obj label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.cree-obj input,
+.cree-obj select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cree-obj button {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cree-obj button:hover {
+    background: #218838;
+}
