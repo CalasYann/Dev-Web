@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use App\Models\Log;
+use OwenIt\Auditing\Models\Audit;
+
+
 
 
 
@@ -58,6 +63,11 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'role' => 'required|string|exists:roles,name',
+            'xp' =>   'required|integer|min:0',
+        ]);
+
+        $user->update([
+            'xp' => $request->xp,
         ]);
 
         $user->update($request->only(['name', 'email']));
@@ -75,6 +85,8 @@ class UserController extends Controller
     
     public function adminDashboard()
 {
+    abort_if(!auth()->user()->hasRole('administrateur'), 403);
+
     $users = User::paginate(10); // Liste paginée des utilisateurs
     return view('admin.users', compact('users'));
 }
@@ -97,6 +109,15 @@ public function updateRoles(Request $request, User $user)
 
     return redirect()->route('admin.users')->with('success', 'Rôles mis à jour avec succès.');
 }
+
+
+public function logs()
+{
+    // Récupère les derniers logs d'audit
+    $logs = Audit::latest()->paginate(20); // ou une autre condition si tu veux filtrer
+    return view('admin.logs', compact('logs'));
+}
+
 
 
 }

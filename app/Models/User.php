@@ -8,13 +8,14 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Log; 
 use Spatie\Permission\Models\Role;
+use OwenIt\Auditing\Contracts\Auditable;
 
 
-
-class User extends Authenticatable
+class User extends Authenticatable implements Auditable
 {
     use HasFactory, Notifiable; // Utilisation de Spatie pour les rôles
     use HasRoles;
+    use \OwenIt\Auditing\Auditable;
     
     protected $guard_name = 'web';
 
@@ -97,6 +98,12 @@ protected static function boot()
         if (!$user->hasRole('simple')) {
             $user->assignRole('simple');
         }
+    });
+    static::created(function ($model) {
+        // Capturer l'URL lors de la création de l'utilisateur
+        $model->tap(function (Audit $audit) {
+            $audit->url = request()->fullUrl();
+        });
     });
 }
 

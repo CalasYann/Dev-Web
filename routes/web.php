@@ -98,7 +98,8 @@ Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('a
 Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 */
-//Route::middleware(['auth', 'can:administrateur'])->group(function () {       VERIF LES SAVE DES BDD
+//Route::middleware(['auth', 'can:administrateur'])->group(function () {   
+
     Route::get('/admin/users', [UserController::class, 'admin_index'])->name('admin.users');
     Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
@@ -106,8 +107,9 @@ Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('
 //});
 Route::put('/admin/users/{user}/roles', [UserController::class, 'updateRoles'])->name('admin.users.updateRoles');
 
+Route::get('/admin/logs', [UserController::class, 'logs'])->name('admin.logs')->middleware('auth');
 
-
+//Route::get('/admin/logs', [App\Http\Controllers\LogController::class, 'index'])->name('admin.logs')->middleware('auth');
 
 
 

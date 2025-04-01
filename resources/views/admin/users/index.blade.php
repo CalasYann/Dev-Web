@@ -37,6 +37,14 @@
         </tbody>
     </table>
 
-    {{ $users->links() }}
+    <a href="{{ route('admin.logs') }}" class="btn btn-primary">
+        Voir les logs
+    </a>
+    
+
+
+
+
+ {{--   {{ $users->links() }} --}}
 </div>
 @endsection

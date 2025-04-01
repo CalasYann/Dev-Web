@@ -18,6 +18,12 @@
             <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}">
         </div>
 
+        <!-- Points -->
+        <div class="mb-3">
+            <label for="xp" class="form-label">Points accumulés</label>
+            <input type="number" name="xp" id="xp" class="form-control" value="{{ old('xp', $user->xp) }}" required>
+        </div>
+
         <div class="mb-3">
             <label for="role" class="form-label">Rôle</label>
             <select name="role" id="role" class="form-select">
