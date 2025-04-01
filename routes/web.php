@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Spatie\Permission\Middleware\RoleMiddleware;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\BackupController;
 
 
 
@@ -113,6 +114,8 @@ Route::get('/admin/logs', [UserController::class, 'logs'])->name('admin.logs')->
 
 
 
+//Route::get('/admin/backup', [BackupController::class, 'backup'])->name('backup')->middleware('auth');
+Route::middleware('auth')->post('/admin/backup', [BackupController::class, 'backup'])->name('backup');
 
 
 

@@ -78,6 +78,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        abort_if(!auth()->user()->hasRole('administrateur'), 403);
         $user->delete();
         return redirect()->route('admin.users')->with('success', 'Utilisateur supprimé.');
     }
@@ -93,6 +94,7 @@ class UserController extends Controller
 
 public function admin_index()
 {
+    abort_if(!auth()->user()->hasRole('administrateur'), 403);
     $users = User::paginate(10);
     return view('admin.users.index', compact('users'));
 }
@@ -113,6 +115,7 @@ public function updateRoles(Request $request, User $user)
 
 public function logs()
 {
+    abort_if(!auth()->user()->hasRole('administrateur'), 403);
     // Récupère les derniers logs d'audit
     $logs = Audit::latest()->paginate(20); // ou une autre condition si tu veux filtrer
     return view('admin.logs', compact('logs'));

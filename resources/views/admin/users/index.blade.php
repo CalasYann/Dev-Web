@@ -41,10 +41,15 @@
         Voir les logs
     </a>
     
+    <form action="{{ route('backup') }}" method="POST">
+        @csrf  <!-- Inclus un token CSRF pour la sécurité -->
+        <button type="submit" class="btn btn-primary">Créer une sauvegarde</button>
+    </form>
+    
 
 
 
 
- {{--   {{ $users->links() }} --}}
+   {{ $users->links() }} 
 </div>
 @endsection
