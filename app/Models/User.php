@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 use OwenIt\Auditing\Contracts\Auditable;
 use \OwenIt\Auditing\Auditable as AuditableTrait;
+use OwenIt\Auditing\Models\Audit;
 
 class User extends Authenticatable implements Auditable
 {
@@ -100,11 +101,16 @@ protected static function boot()
             $user->assignRole('simple');
         }
     });
-    static::created(function ($model) {
-        // Capturer l'URL lors de la création de l'utilisateur
-        $model->tap(function (Audit $audit) {
-            $audit->url = request()->fullUrl();
-        });
+    static::created(function ($user) {
+        // Trouver l'audit le plus récent de cet utilisateur
+        $audit = Audit::where('auditable_id', $user->id)
+                      ->where('auditable_type', User::class)
+                      ->latest()
+                      ->first(); // ✅ Assure de récupérer un objet
+
+        if ($audit) {
+            $audit->update(['url' => request()->fullUrl()]);
+        }
     });
 }
 
