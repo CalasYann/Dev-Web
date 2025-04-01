@@ -819,3 +819,99 @@ table tr:nth-child(even) {
 .cree-obj button:hover {
     background: #218838;
 }
+
+/* CSS recherche d'utilisateurs */
+
+.recherche-users {
+    max-width: 800px;
+    margin: 40px auto;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recherche-users h1, 
+.recherche-users h2 {
+    color: #007bff;
+    text-align: center;
+}
+
+.recherche-users form {
+    margin-bottom: 20px;
+}
+
+.recherche-users .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.recherche-users .col {
+    flex: 1;
+    min-width: 150px;
+}
+
+.recherche-users input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.recherche-users button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.recherche-users .btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.recherche-users .btn-primary:hover {
+    background: #0056b3;
+}
+
+.recherche-users .btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.recherche-users .btn-secondary:hover {
+    background: #545b62;
+}
+
+.recherche-users .list-group {
+    list-style: none;
+    padding: 0;
+}
+
+.recherche-users .list-group-item {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recherche-users .btn-info {
+    background: #17a2b8;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.recherche-users .btn-info:hover {
+    background: #138496;
+}
