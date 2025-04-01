@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/logout', function(){
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
 
 Route::get('/search', [SearchController::class, 'search'])->name('search')->middleware('auth');
 Route::get('/places', [PlaceController::class, 'index'])->name('places.index')->middleware('auth');
@@ -64,8 +68,6 @@ Route::post('/report', [ReportController::class, 'store'])->name('report.store')
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth'])->group(function () {

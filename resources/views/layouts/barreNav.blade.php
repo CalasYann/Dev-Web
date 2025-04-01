@@ -24,11 +24,10 @@ $articles = Article::latest()->take(5)->get();
             <a href="{{ route('login') }}">Se connecter</a>
         @endif
         @if(auth()->check())
-            <a class="nav-link" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                <button>Se deconnecter</button>
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit"> Se décaloter</button>
+            </form>
         @endif
     </header>
     <nav>
