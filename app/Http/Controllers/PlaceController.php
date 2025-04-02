@@ -109,5 +109,13 @@ class PlaceController extends Controller
         return view('admin.add_places');
     }
 
+    public function getOpeningTimeAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
 
+    public function getClosingTimeAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
 }
