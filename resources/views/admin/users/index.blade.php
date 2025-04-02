@@ -1,4 +1,6 @@
-<?php abort_if(!auth()->user()->hasRole('administrateur'), 403); ?>
+@if(!auth()->check() || !auth()->user()->hasRole('administrateur'))
+    <script>window.location.href = "{{ url('/') }}";</script>
+@endif
 
 @extends('layouts.barreNav')
 

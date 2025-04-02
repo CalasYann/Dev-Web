@@ -59,6 +59,9 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
+        
+    
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
@@ -82,7 +85,10 @@ class UserController extends Controller
         $user->syncRoles([$request->role]);
         $user->checkRankUpgrade();
 
-        return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour.');
+        
+
+        return redirect('/')->with('success', 'Utilisateur mis à jour.');
+
     }
 
     public function destroy(User $user)

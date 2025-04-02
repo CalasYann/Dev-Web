@@ -54,6 +54,11 @@ $articles = Article::latest()->take(5)->get();
                 <button>Voir mon profil</button>
             </a>
         @endif
+        @if(auth()->user()->hasRole('administrateur'))
+            <a href="{{ route('admin.users',  auth()->user()->id) }}">
+                <button>Module Administrateur</button>
+            </a>
+        @endif
     </nav>
 
     <div class="container">
