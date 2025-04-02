@@ -2,6 +2,7 @@
 @extends('layouts.barreNav')
 
 @section('content')
+<div class="reset">
     <div class="container">
         <h2>Réinitialiser votre mot de passe</h2>
 
@@ -46,4 +47,5 @@
             <button type="submit" class="btn btn-primary">Réinitialiser le mot de passe</button>
         </form>
     </div>
+</div>
 @endsection
