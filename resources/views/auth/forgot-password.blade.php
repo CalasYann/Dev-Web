@@ -1,5 +1,5 @@
 <?php abort_if(!auth(), 403); ?>
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <div class="container">
