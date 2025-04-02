@@ -5,12 +5,14 @@
 @extends('layouts.barreNav')
 
 @section('content')
-<div class="container">
-    <h1>Liste des utilisateurs</h1>
+<div class="module-admin">
+    <div class="titre">
+        <h1>Liste des utilisateurs</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+    </div>
 
     <table class="table">
         <thead>

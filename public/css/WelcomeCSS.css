@@ -1411,3 +1411,124 @@ table tr:nth-child(even) {
 .edit-utilisateur .btn-primary:hover {
     background-color: #0056b3;
 }
+
+/* CSS Module admin */
+.module-admin .titre {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.module-admin h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.module-admin .alert {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.module-admin table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.module-admin th, .module-admin td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.module-admin th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.module-admin tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.module-admin .btn {
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    display: inline-block;
+    margin: 5px;
+}
+
+.module-admin .btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.module-admin .btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.module-admin .btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.module-admin .btn-danger:hover {
+    background-color: #c82333;
+}
+
+.module-admin .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.module-admin .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.module-admin form {
+    display: inline;
+}
+
+.module-admin a {
+    display: inline-block;
+    margin: 10px;
+}
+
+.historique .titre {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.historique h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.liste-signalement .titre {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.liste-signalement h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
