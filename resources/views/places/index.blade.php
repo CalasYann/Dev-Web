@@ -2,6 +2,16 @@
 @extends('layouts.barreNav')
 
 @section('content')
+<style>
+    body {
+        background-image: url('/images/background3.jpg'); /* Image spécifique pour cette vue */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 80vh;
+    }
+</style>
     <div>
         <div class="lieux">
             <h1>Chercher un lieu</h1>

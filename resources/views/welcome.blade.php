@@ -7,6 +7,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        background-attachment: fixed;
         min-height: 80vh;
     }
 </style>
@@ -36,7 +37,7 @@
             <p>Vous avez repéré un problème dans l'espace public ? Croisée met à votre disposition un service en ligne pour signaler facilement tout incident ou anomalie : voirie dégradée, éclairage défectueux, déchets abandonnés, ou tout autre souci impactant la vie quotidienne.</p>
             <a href="{{ route('report.index') }}">Signaler un problème</a>
         </div>
-
+    </section>
         
         
     
