@@ -25,6 +25,11 @@ class User extends Authenticatable implements Auditable
         'email',
         'password',
         'xp',
+        'prenom',
+        'adresse',
+        'age',
+        'metier',
+        'email_verified_at',
     ];
 
     // Pas besoin d'avoir 'role' dans les attributs par défaut
