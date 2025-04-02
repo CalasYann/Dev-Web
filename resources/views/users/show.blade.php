@@ -1,7 +1,7 @@
 @extends('layouts.barreNav')
 
 @section('content')
-<div class="container">
+<div class="show">
     <h1>Profil de {{ $user->prenom }} {{ $user->name }}</h1>
 
     <p><strong>Email :</strong> {{ $user->email }}</p>
