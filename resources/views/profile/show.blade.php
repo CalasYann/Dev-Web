@@ -27,7 +27,7 @@
             </form>
         @endif
         @if(auth()->user()->id === $user->id || auth()->user()->hasRole('administrateur'))
-            <a href="{{ route('profile.edit', $user) }}" class="btn btn-primary">Modifier mon profil</a>
+            <a href="{{ route('profile.edit', auth()->user()) }}" class="btn btn-primary">Modifier mon profil</a>
 
             @if(auth()->user()->hasRole('administrateur'))
             <li class="nav-item">

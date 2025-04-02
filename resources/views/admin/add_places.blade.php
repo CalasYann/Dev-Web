@@ -1,3 +1,4 @@
+<?php abort_if(!auth()->user()->hasRole('administrateur'), 403); ?>
 @extends('layouts.barreNav')
 
 @section('content')
