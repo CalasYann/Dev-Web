@@ -26,7 +26,7 @@ $articles = Article::latest()->take(5)->get();
         @if(auth()->check())
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit"> Se décaloter</button>
+                <button type="submit"> Se déconnecter</button>
             </form>
         @endif
     </header>
