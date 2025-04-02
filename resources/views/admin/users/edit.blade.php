@@ -20,6 +20,21 @@
             <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}">
         </div>
 
+        <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" value="{{ old('prenom', $user->prenom) }}" required>
+        </div>
+            
+        <div class="mb-3">
+            <label for="metier" class="form-label">Metier</label>
+            <input type="text" class="form-control" id="metier" name="metier" value="{{ old('metier', $user->metier) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" value="{{ old('age', $user->age) }}" required>
+        </div>
+
         <!-- Points -->
         <div class="mb-3">
             <label for="xp" class="form-label">Points accumulés</label>

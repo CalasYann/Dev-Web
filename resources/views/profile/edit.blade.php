@@ -18,23 +18,24 @@
             </div>
 
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" value="{{ old('prenom', $user->prenom) }}" required>
             </div>
             
+            <div class="mb-3">
+                <label for="metier" class="form-label">Metier</label>
+                <input type="text" class="form-control" id="metier" name="metier" value="{{ old('metier', $user->metier) }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" value="{{ old('age', $user->age) }}" required>
+            </div>
+
             <p><strong>Role :</strong> {{ $user->role }}</p>
             <p><strong>Experience :</strong> {{ $user->xp }}</p>
             <p><strong>Date de création :</strong> {{ $user->created_at }}</p>
 
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Nouveau mot de passe</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="password" name="password">
-                    <button type="button" class="btn btn-secondary" onclick="togglePassword()">👁️</button>
-                </div>
-                <small class="text-muted">Laissez vide pour ne pas changer le mot de passe.</small>
-            </div>
 
             <button type="submit" class="btn btn-success">Mettre à jour</button>
         </form>

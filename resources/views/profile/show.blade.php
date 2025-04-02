@@ -9,6 +9,9 @@
     <p><strong>Role :</strong> {{ implode(', ', $user->getRoleNames()->toArray()) }}</p>
     <p><strong>Experience :</strong> {{ $user->xp }}</p>
     <p><strong>Date de création :</strong> {{ $user->created_at }}</p>
+    <p><strong>Age :</strong> {{ $user->age }}</p>
+    <p><strong>Métier :</strong> {{ $user->metier }}</p>
+
 
     @auth
         @if (session('message'))

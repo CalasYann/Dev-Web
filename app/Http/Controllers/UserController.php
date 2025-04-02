@@ -64,12 +64,17 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'role' => 'required|string|exists:roles,name',
             'xp' =>   'required|integer|min:0',
+            'age'=>'required|integer|min:0',
+            'metier'=>'required|string'
         ]);
 
         $user->update([
             'name' => $request->name,
+            'prenom' => $request->prenom,
             'email' => $request->email,
             'xp' => $request->xp,
+            'age' =>$request->age,
+            'metier' =>$request->metier,
         ]);
 
         //$user->update($request->only(['name', 'email']));
