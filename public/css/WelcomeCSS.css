@@ -5,6 +5,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
+    background-image: url('/images/background3.jpg'); /* Image spécifique pour cette vue */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 80vh;
 }
 header {
     font-size: 25px;
@@ -690,6 +696,7 @@ table tr:nth-child(even) {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: white;
 }
 
 .table th, .table td {
