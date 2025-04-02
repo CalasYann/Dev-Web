@@ -22,6 +22,16 @@
                 <td>{{ $report->description }}</td>
                 <td>{{ $report->user->name }}</td>
                 <td>{{ $report->created_at }}</td>
+                <td>
+                    @if(auth()->user()->hasRole('administrateur'))
+                        <form action="{{ route('reports.destroy', $report->id) }}" method="POST" style="display:inline;"
+                            onsubmit="return confirm('Confirmez-vous la suppression de ce signalement ?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

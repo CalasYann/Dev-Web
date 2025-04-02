@@ -40,6 +40,10 @@ class EventController extends Controller
 
         Event::create($validated);
 
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('events.index')->with('success', 'Evenelent ajouté avec succès.');
     }
 
@@ -65,6 +69,10 @@ class EventController extends Controller
 
         $event->update($request->all());
 
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('events.index')->with('success', 'Evenement mis à jour');
     }
 
@@ -74,6 +82,10 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('events.index')->with('success', 'Evenement supprimé');
     }
 }

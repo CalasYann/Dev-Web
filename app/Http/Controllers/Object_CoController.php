@@ -41,6 +41,10 @@ class Object_CoController extends Controller
         ]);
 
         Object_Co::create($request->all());
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
 
         return redirect()->route('object_co.index')->with('success', 'Objet connecté ajouté avec succès.');
     }
@@ -80,6 +84,10 @@ class Object_CoController extends Controller
     public function destroy(Object_CO $object_co)
     {
         $object_co->delete();
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('object_co.index')->with('success', 'Objet supprimé.');
     }
     public function start($id)
@@ -111,6 +119,11 @@ class Object_CoController extends Controller
 
         // Générer le PDF avec la vue correspondante
         $pdf = PDF::loadView('rapport_pdf', compact('objects'));
+
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
 
         // Télécharger le fichier PDF
         return $pdf->download('rapport-objets-connectes.pdf');

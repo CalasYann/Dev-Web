@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <!-- <a href="{{ route('object_co.create') }}" class="btn btn-primary">Ajouter un objet</a> -->
+    
 </div>
     <table class="table">
         <thead>
@@ -34,13 +34,20 @@
                     <td>{{ $object->consommation_totale }}</td>
 
                     <td>
-                        <a href="{{ route('object_co.edit', $object->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('object_co.destroy', $object->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
+                        @if(auth()->user()->hasRole('complexe') || auth()->user()->hasRole('administrateur'))
+                            <a href="{{ route('object_co.edit', $object->id) }}" class="btn btn-warning">Modifier</a>
+                        @endif
+                    
+                        @if(auth()->user()->hasRole('administrateur'))
+                            <form action="{{ route('object_co.destroy', $object->id) }}" method="POST" style="display:inline;"
+                                onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet objet ?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        @endif
                     </td>
+                    
                 </tr>
             @endforeach
         </tbody>

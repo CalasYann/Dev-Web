@@ -79,6 +79,7 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->mid
 Route::get('/report', [ReportController::class, 'index'])->name('report.index');
 Route::post('/report', [ReportController::class, 'store'])->name('report.store');
 Route::get('/admin/reports', [ReportController::class, 'showReports'])->name('admin.reports');
+Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->name('reports.destroy');
 
 
 Auth::routes();

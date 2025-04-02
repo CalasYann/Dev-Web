@@ -63,6 +63,10 @@ class PlaceController extends Controller
 
         // Création d'un nouveau lieu
         Place::create($request->all());
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
 
         return redirect()->route('places.index'); // Rediriger vers la page d'index après la création
     }
@@ -93,6 +97,10 @@ class PlaceController extends Controller
     public function destroy(Place $place)
     {
         $place->delete();
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
+
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         return redirect()->route('places.index')->with('success', 'Lieu supprimé avec succès.');
     }
 

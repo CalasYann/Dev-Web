@@ -42,6 +42,18 @@ class ReportController extends Controller
     return view('admin.reports', compact('reports'));
 }
     
+public function destroy(Report $report)
+{
+    // Vérifie si l'utilisateur est administrateur
+    if (!auth()->user()->hasRole('administrateur')) {
+        return redirect()->route('admin.reports')->with('error', 'Accès refusé.');
+    }
+
+    $report->delete(); // Supprime le signalement
+
+    return redirect()->route('admin.reports')->with('success', 'Signalement supprimé avec succès.');
+}
+
 
    
 }

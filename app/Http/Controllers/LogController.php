@@ -16,7 +16,10 @@ class LogController extends Controller
         // Vérifie si le fichier de logs existe
         $logPath = storage_path('logs/laravel.log');
 
+        $user = auth()->user();
+        $user->xp += 1; // Gagne 1 XP par signalement
 
+        $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
         
         if (!File::exists($logPath)) {
             return view('admin.logs', ['logs' => 'Aucun log disponible.']);
