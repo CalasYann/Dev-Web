@@ -13,4 +13,4 @@ sudo apt upgrade
 7) Parametrer la base de données : php artisan de:seed --class=RoleSeeder
 8) Lancer le serveur : php artisan serve
 
-Vous pouvez profiter de notre site et de ses fonctionnalités !!!
+Vous pouvez profiter de notre site et de ses fonctionnalités à l'adresse suivante : http://127.0.0.1:8000 !!!
