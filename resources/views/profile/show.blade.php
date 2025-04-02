@@ -12,7 +12,6 @@
     <p><strong>Age :</strong> {{ $user->age }}</p>
     <p><strong>Métier :</strong> {{ $user->metier }}</p>
 
-
     @auth
         @if (session('message'))
             <p class="alert alert-info">{{ session('message') }}</p>

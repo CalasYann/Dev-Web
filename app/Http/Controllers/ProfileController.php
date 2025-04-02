@@ -26,27 +26,25 @@ class ProfileController extends Controller {
 
     public function update(Request $request, User $user)
     {
-        if (auth()->user()->id !== $user->id && !auth()->user()->hasRole('admin')) {
-            abort(403, 'Accès interdit');
-        }
 
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:8|',
+            'age'=>'required|integer|min:0',
+            'metier'=>'required|string|max:255',
+            'prenom'=>'required|string|max:255'
         ]);
 
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
+        $user->update([
+            'name' => $request->name,
+            'prenom' => $request->prenom,
+            'age' =>$request->age,
+            'metier' =>$request->metier,
+        ]);
 
         // Si un nouveau mot de passe est fourni, on le met à jour
-        if (!empty($validated['password'])) {
-            $user->password = Hash::make($validated['password']);
-        }
 
         $user->save();
 
         return redirect()->route('profile.show', $user)->with('success', 'Profil mis à jour !');
     }
-
 }

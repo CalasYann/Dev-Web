@@ -31,7 +31,6 @@
                 <label for="age" class="form-label">Age</label>
                 <input type="number" class="form-control" id="age" name="age" value="{{ old('age', $user->age) }}" required>
             </div>
-
             <p><strong>Role :</strong> {{ $user->role }}</p>
             <p><strong>Experience :</strong> {{ $user->xp }}</p>
             <p><strong>Date de création :</strong> {{ $user->created_at }}</p>
@@ -41,14 +40,4 @@
         </form>
     </div>
 
-    <script>
-        function togglePassword() {
-            let passwordField = document.getElementById("password");
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-            } else {
-                passwordField.type = "password";
-            }
-        }
-    </script>
 @endsection
