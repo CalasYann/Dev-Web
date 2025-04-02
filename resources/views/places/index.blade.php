@@ -22,12 +22,6 @@
                 <label for="affluence_max">Affluence maximale :</label>
                 <input type="number" name="affluence_max" id="affluence_max" min="0" value="{{ request('affluence_max') }}">
 
-                <label for="horaire_ouverture">Ouvert après :</label>
-                <input type="time" name="horaire_ouverture" id="horaire_ouverture" value="{{ request('horaire_ouverture') }}">
-
-                <label for="horaire_fermeture">Ferme après :</label>
-                <input type="time" name="horaire_fermeture" id="horaire_fermeture" value="{{ request('horaire_fermeture') }}">
-
                 <button type="submit">Filtrer</button>
             </form>
         </div>
