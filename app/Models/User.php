@@ -76,8 +76,8 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
         // Liste des rôles et le seuil d'XP pour les atteindre
         $ranks = [
             'simple' => 0,
-            'complexe' => 1,  // Passe "complexe" à 100 XP
-            'administrateur' => 2,  // Passe "administrateur" à 300 XP
+            'complexe' => 15,  
+            'administrateur' => 50,  
         ];
 
         // Détermine le rôle à assigner en fonction de l'XP

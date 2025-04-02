@@ -26,4 +26,11 @@ class HomeController extends Controller
         // return view('home');
         return view('welcome');
     }
+
+    public function home()
+{
+    $events = Event::orderBy('date', 'asc')->get();
+    return view('welcome', compact('events')); // Assure-toi que le fichier Blade est bien "home.blade.php"
+}
+
 }

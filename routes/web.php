@@ -23,9 +23,15 @@ Route::get('/connecte-simple', function () {
     return view('ConnecteSimple');
 })->name('connecte.simple');
 */
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
