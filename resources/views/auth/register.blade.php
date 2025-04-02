@@ -1,4 +1,4 @@
-
+<?php abort_if(!auth(), 403); ?>
 @extends('layouts.barreNav')
 
 @section('content')

@@ -1,3 +1,4 @@
+<?php abort_if(!auth(), 403); ?>
 @extends('layouts.barreNav')
 
 @section('content')
@@ -62,7 +63,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
-                                <
+                                
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </div>
                         </div>

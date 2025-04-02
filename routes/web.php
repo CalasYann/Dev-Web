@@ -17,6 +17,9 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\BackupController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 Route::get('/connecte-simple', function () {
@@ -157,3 +160,16 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('/profile')->with('message', 'E-mail vérifié avec succès !');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+// Route pour afficher le formulaire de réinitialisation du mot de passe
+Route::get('forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('password.request');
+
+// Route pour envoyer le lien de réinitialisation du mot de passe
+Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+// Route pour afficher le formulaire de réinitialisation du mot de passe
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+// Route pour effectuer la réinitialisation du mot de passe
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
