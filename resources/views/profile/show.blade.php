@@ -16,7 +16,7 @@
 
             @if(auth()->user()->hasRole('administrateur'))
             <li class="nav-item">
-                <a href="{{ route('admin.users') }}" class="btn btn-primary">👤 Gestion des utilisateurs</a>
+                <a href="{{ route('admin.users') }}" class="btn btn-primary">👤 Module administrateur</a>
             </li>
             @endif
 

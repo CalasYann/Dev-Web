@@ -46,6 +46,8 @@
         <button type="submit" class="btn btn-primary">Créer une sauvegarde</button>
     </form>
     
+    <a href="{{ route('admin.reports') }}" class="btn btn-danger">📢 Voir les signalements</a>
+
 
 
 

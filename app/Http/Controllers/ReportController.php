@@ -31,18 +31,16 @@ class ReportController extends Controller
         $user = auth()->user();
         $user->xp += 1; // Gagne 1 XP par signalement
 
-
-        Log::info('User XP before upgrade: ' . $user->xp);
-        Log::info('User roles before upgrade: ' . implode(', ', $user->getRoleNames()->toArray()));
-
         $user->checkRankUpgrade(); // Vérifie si l'utilisateur doit monter de rang
-
-        Log::info( 'User  XP after upgrade: ' . $user->name);
-        Log::info('User roles after upgrade: ' . implode(', ', $user->getRoleNames()->toArray()));
 
         return redirect()->back()->with('success', 'Problème signalé avec succès.');
     }
    
+    public function showReports()
+{
+    $reports = Report::latest()->paginate(10);
+    return view('admin.reports', compact('reports'));
+}
     
 
    
