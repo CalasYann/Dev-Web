@@ -21,7 +21,9 @@ $articles = Article::latest()->take(5)->get();
         <h1>La Ville de Croisée</h1>
 
         @if(!auth()->check())
-            <a href="{{ route('login') }}">Se connecter</a>
+            <a href="{{ route('login') }}">
+                <button>Se connecter</button>
+            </a>
         @endif
         @if(auth()->check())
             <form method="POST" action="{{ route('logout') }}">
