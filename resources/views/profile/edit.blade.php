@@ -1,7 +1,7 @@
 @extends('layouts.barreNav')
 
 @section('content')
-    <div class="container">
+    <div class="edit-profile">
         <h1>Modifier mon profil</h1>
 
         @if (session('success'))
