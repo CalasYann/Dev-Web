@@ -58,62 +58,57 @@ class User extends Authenticatable implements Auditable
     }
 */
 
-public function getRoleAttribute()
-{
-    return $this->getRoleNames()->first();
-}
-
-
-public function checkRankUpgrade()
-{
-    // Liste des rôles et le seuil d'XP pour les atteindre
-    $ranks = [
-        'simple' => 0,
-        'complexe' => 1,  // Passe "complexe" à 100 XP
-        'administrateur' => 2,  // Passe "administrateur" à 300 XP
-    ];
-
-    // Détermine le rôle à assigner en fonction de l'XP
-    $assignedRole = 'administrateur';  // Par défaut, rôle simple
-
-    foreach ($ranks as $rank => $xpRequired) {
-        if ($this->xp >= $xpRequired) {
-            $assignedRole = $rank;
-        }
+    public function getRoleAttribute()
+    {
+        return $this->getRoleNames()->first();
     }
 
-    Log::info('Assigned Role: ' . $assignedRole);
-    Log::info('User roles: ' . implode(', ', $this->getRoleNames()->toArray()));
 
-    // Utiliser syncRoles pour mettre à jour les rôles
-    $this->syncRoles([$assignedRole]);
-    
-    //$this->syncRoles(['administrateur']);
-    $this->save();  // Sauvegarde l'utilisateur avec son nouveau rôle
-}
+    public function checkRankUpgrade()
+    {
+        // Liste des rôles et le seuil d'XP pour les atteindre
+        $ranks = [
+            'simple' => 0,
+            'complexe' => 1,  // Passe "complexe" à 100 XP
+            'administrateur' => 2,  // Passe "administrateur" à 300 XP
+        ];
 
-protected static function boot()
-{
-    parent::boot();
+        // Détermine le rôle à assigner en fonction de l'XP
+        $assignedRole = 'administrateur';  // Par défaut, rôle simple
 
-    static::created(function ($user) {
-        //$user->audit('User created');
-        if (!$user->hasRole('simple')) {
-            $user->assignRole('simple');
+        foreach ($ranks as $rank => $xpRequired) {
+            if ($this->xp >= $xpRequired) {
+                $assignedRole = $rank;
+            }
         }
-    });
-    static::created(function ($user) {
-        // Trouver l'audit le plus récent de cet utilisateur
-        $audit = Audit::where('auditable_id', $user->id)
-                      ->where('auditable_type', User::class)
-                      ->latest()
-                      ->first(); // ✅ Assure de récupérer un objet
 
-        if ($audit) {
-            $audit->update(['url' => request()->fullUrl()]);
-        }
-    });
-}
+        Log::info('Assigned Role: ' . $assignedRole);
+        Log::info('User roles: ' . implode(', ', $this->getRoleNames()->toArray()));
+
+        // Utiliser syncRoles pour mettre à jour les rôles
+        $this->syncRoles([$assignedRole]);
+        
+        //$this->syncRoles(['administrateur']);
+        $this->save();  // Sauvegarde l'utilisateur avec son nouveau rôle
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            //$user->audit('User created');
+            if (!$user->hasRole('simple')) {
+                $user->assignRole('simple');
+            }
+        });
+        static::created(function ($model) {
+            // Capturer l'URL lors de la création de l'utilisateur
+            $model->tap(function (Audit $audit) {
+                $audit->url = request()->fullUrl();
+            });
+        });
+    }
 
 
     public function reports()

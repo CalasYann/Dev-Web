@@ -15,7 +15,8 @@ use App\Http\Controllers\UserController;
 use Spatie\Permission\Middleware\RoleMiddleware;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\BackupController;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 
 Route::get('/connecte-simple', function () {
@@ -128,3 +129,23 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')
 Route::get('/rapport', [Object_CoController::class, 'rapport'])->name('object_cos.rapport');
 
 Route::get('/rapport-objets/pdf', [Object_CoController::class, 'genererRapportPDF'])->name('object_co.rapport.pdf')->middleware('auth');
+
+
+// Activer la vérification d'email lors de l'inscription
+Auth::routes(['verify' => true]);
+
+// Route pour renvoyer l'e-mail de vérification
+Route::post('/email/verification-notification', function (Request $request) {
+    if ($request->user()->hasVerifiedEmail()) {
+        return back()->with('message', 'Votre e-mail est déjà vérifié.');
+    }
+
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'E-mail de vérification renvoyé.');
+})->middleware(['auth'])->name('verification.send');
+
+// Route pour vérifier l'e-mail après le clic sur le lien reçu par mail
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/profile')->with('message', 'E-mail vérifié avec succès !');
+})->middleware(['auth', 'signed'])->name('verification.verify');
