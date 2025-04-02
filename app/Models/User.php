@@ -11,8 +11,10 @@ use Spatie\Permission\Models\Role;
 use OwenIt\Auditing\Contracts\Auditable;
 use \OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Models\Audit;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable implements Auditable
+
+class User extends Authenticatable implements Auditable, MustVerifyEmail
 {
     use HasFactory, Notifiable; // Utilisation de Spatie pour les rôles
     use HasRoles, AuditableTrait;
