@@ -24,6 +24,7 @@ class User extends Authenticatable implements Auditable
         'name',
         'email',
         'password',
+        'xp',
     ];
 
     // Pas besoin d'avoir 'role' dans les attributs par défaut

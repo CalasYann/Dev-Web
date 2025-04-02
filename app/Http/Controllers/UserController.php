@@ -67,11 +67,15 @@ class UserController extends Controller
         ]);
 
         $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
             'xp' => $request->xp,
         ]);
 
-        $user->update($request->only(['name', 'email']));
+        //$user->update($request->only(['name', 'email']));
+        
         $user->syncRoles([$request->role]);
+        $user->checkRankUpgrade();
 
         return redirect()->route('admin.users')->with('success', 'Utilisateur mis à jour.');
     }
