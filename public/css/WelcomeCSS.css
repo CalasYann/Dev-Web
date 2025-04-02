@@ -970,7 +970,7 @@ table tr:nth-child(even) {
 
 /* CSS page de profile */
 
-.profile {
+.profil {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
@@ -980,34 +980,34 @@ table tr:nth-child(even) {
     text-align: center;
 }
 
-.profile h1 {
+.profil h1 {
     color: #2c3e50;
     margin-bottom: 20px;
 }
 
-.profile ul {
+.profil ul {
     list-style: none;
     padding: 0;
     margin: 20px 0;
 }
 
-.profile li {
+.profil li {
     font-size: 16px;
     color: #555;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
 }
 
-.profile li strong {
+.profil li strong {
     color: #333;
 }
 
-.profile h2 {
+.profil h2 {
     color: #2c3e50;
     margin-top: 20px;
 }
 
-.profile p {
+.profil p {
     font-size: 16px;
     color: #555;
     margin: 10px 0;
@@ -1351,5 +1351,63 @@ table tr:nth-child(even) {
 }
 
 .show a.btn:hover {
+    background-color: #0056b3;
+}
+
+/* CSS Modif users */
+
+.edit-utilisateur {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-utilisateur .container {
+    background: white;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+}
+
+.edit-utilisateur h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-utilisateur .form-label {
+    font-weight: bold;
+}
+
+.edit-utilisateur .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-utilisateur .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-utilisateur .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.edit-utilisateur .btn-primary:hover {
     background-color: #0056b3;
 }
