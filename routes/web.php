@@ -18,11 +18,11 @@ use App\Http\Controllers\BackupController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
-
+/*
 Route::get('/connecte-simple', function () {
     return view('ConnecteSimple');
 })->name('connecte.simple');
-
+*/
 Route::get('/', function () {
     return view('welcome');
 });
@@ -44,6 +44,8 @@ Route::post('/places', [PlaceController::class, 'store'])->name('places.store')-
 Route::get('/places/{place}/edit', [PlaceController::class, 'edit'])->name('places.edit')->middleware('auth');
 Route::put('/places/{place}', [PlaceController::class, 'update'])->name('places.update')->middleware('auth');
 Route::delete('/places/{place}', [PlaceController::class, 'destroy'])->name('places.destroy')->middleware('auth');
+
+Route::get('/admin/places', [PlaceController::class, 'add_places'])->name('admin.places')->middleware('auth');
 
 
 Route::middleware('auth')->group(function () {

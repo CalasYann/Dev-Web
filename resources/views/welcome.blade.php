@@ -39,7 +39,7 @@
 </main>
 
     
-
+{{-- 
     <section>
         <h2>si jamais vous avez un problème:</h2>
         <a href="{{ route('report.index') }}">Signaler un problème</a>
@@ -56,7 +56,7 @@
             @endif
         </ul>
     </nav>
-    
+    --}} 
 
 </body>
 </html>

@@ -96,4 +96,10 @@ class PlaceController extends Controller
         return redirect()->route('places.index')->with('success', 'Lieu supprimé avec succès.');
     }
 
+    public function add_places()
+    {
+        return view('admin.add_places');
+    }
+
+
 }

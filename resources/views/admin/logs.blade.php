@@ -1,4 +1,6 @@
-       @extends('layouts.app')
+<?php abort_if(!auth()->user()->hasRole('administrateur'), 403); ?>
+
+@extends('layouts.barreNav')
 
 @section('content')
 <h1>Historique des actions</h1>

@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="reserver">
+    @if(auth()->user()->hasRole('complexe') || auth()->user()->hasRole('administrateur'))
     <div class="boutton-reserver">
         <a class="nav-link" href="{{ route('places.index') }}">
             <h2>Réserver un Lieu</h2>
         </a>
     </div>
-
+    @endif
     <div class="container">
         <h1 class="mb-4"> Mes Réservations </h1>
 

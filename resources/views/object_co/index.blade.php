@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <a href="{{ route('object_co.create') }}" class="btn btn-primary">Ajouter un objet</a>
+    <!-- <a href="{{ route('object_co.create') }}" class="btn btn-primary">Ajouter un objet</a> -->
 </div>
     <table class="table">
         <thead>
@@ -46,8 +46,8 @@
         </tbody>
     </table>
 
-    
+    {{-- 
     <a href="{{ route('object_cos.rapport') }}" class="btn btn-primary">
         Voir le rapport des objets connectés
-    </a>
+    </a>     --}}
 @endsection

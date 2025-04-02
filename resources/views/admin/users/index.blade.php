@@ -1,4 +1,6 @@
-@extends('layouts.app')
+<?php abort_if(!auth()->user()->hasRole('administrateur'), 403); ?>
+
+@extends('layouts.barreNav')
 
 @section('content')
 <div class="container">
@@ -48,9 +50,15 @@
     
     <a href="{{ route('admin.reports') }}" class="btn btn-danger">📢 Voir les signalements</a>
 
+    <a href="{{ route('object_cos.rapport') }}" class="btn btn-primary">
+        Voir le rapport des objets connectés
+    </a>  
 
+    <a href="{{ route('admin.places') }}" class="btn btn-primary">
+        Ajouter un nouveau lieu
+    </a>  
 
-
+    <a href="{{ route('object_co.create') }}" class="btn btn-primary">Ajouter un objet</a> 
 
    {{ $users->links() }} 
 </div>

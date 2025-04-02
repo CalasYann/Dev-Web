@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.barreNav')
 
 @section('content')
     <h1>Rapport d'utilisation des objets connectés</h1>
